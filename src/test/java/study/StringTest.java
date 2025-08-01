@@ -3,7 +3,7 @@ package study;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.*;
 
 public class StringTest {
     @Test
@@ -43,6 +43,36 @@ public class StringTest {
 
         String result = actual.substring(1, actual.length()-1);
         assertThat(result).isEqualTo("1,2");
+    }
+
+    @DisplayName("[요구사항3] String의 charAt() 메소드를 활용하여, 특정 위치의 문자를 가져온다")
+    @Test
+    void get_the_character_at_a_specific_location_by_using_charAt_method_of_String() {
+        String actual = "abc";
+        char result = actual.charAt(0);
+        assertThat(result).isEqualTo('a');
+    }
+
+    @DisplayName("[요구사항3] String의 charAt() 메소드로 범위를 벗어난 인덱스에 접근하면, StringIndexOutOfBoundsException이 발생한다")
+    @Test
+    void if_access_an_index_out_of_range_using_charAt_method_of_String_StringIndexOutOfBoundsException_occurs() {
+        String actual = "abc";
+
+        assertThatThrownBy(() -> {
+            actual.charAt(actual.length());
+        }).isInstanceOf(StringIndexOutOfBoundsException.class)
+                .hasMessageContaining("String index out of range: %s", actual.length());
+    }
+
+    @DisplayName("[요구사항3] String의 charAt() 메소드로 음수 인덱스에 접근하면, StringIndexOutOfBoundsException이 발생한다")
+    @Test
+    void if_access_a_negative_index_using_the_charAt_method_of_String_StringIndexOutOfBoundsException_occurs() {
+        String actual = "abc";
+
+        assertThatExceptionOfType(StringIndexOutOfBoundsException.class)
+                .isThrownBy(() -> {
+            actual.charAt(-1);
+        }).withMessageMatching("String index out of range: -1");
     }
 
     private void printActualResult(String[] actual) {
