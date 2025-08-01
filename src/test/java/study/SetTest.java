@@ -4,12 +4,14 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.HashSet;
 import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class SetTest {
@@ -37,5 +39,13 @@ public class SetTest {
     void contains(int value) {
         assertThat(numbers.contains(value)).isTrue();
         assertTrue(numbers.contains(value));
+    }
+
+    @DisplayName("[요구사항3] 테스트 코드의 중복 제거")
+    @ParameterizedTest
+    @CsvSource(value = {"1:true", "2:true", "3:true", "4:false", "5:false"}, delimiter = ':')
+    void contains3(int value, boolean expected) {
+        boolean actualContain = numbers.contains(value);
+        assertEquals(expected, actualContain);
     }
 }
