@@ -3,11 +3,14 @@ package study;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.HashSet;
 import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class SetTest {
     private Set<Integer> numbers;
@@ -26,5 +29,13 @@ public class SetTest {
     @Test
     void check_the_size_of_Set_using_size_method_of_Set() {
         assertThat(numbers.size()).isEqualTo(3);
+    }
+
+    @DisplayName("[요구사항2] 테스트 코드의 중복 제거")
+    @ParameterizedTest
+    @ValueSource(ints = {1, 2, 3})
+    void contains(int value) {
+        assertThat(numbers.contains(value)).isTrue();
+        assertTrue(numbers.contains(value));
     }
 }
