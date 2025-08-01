@@ -36,6 +36,15 @@ public class StringTest {
         printActualResult(result);
     }
 
+    @DisplayName("[요구사항2] String의 substring() 메소드를 활용하여, '(1,2)'의 소괄호를 제거한다")
+    @Test
+    void remove_parentheses_by_using_substring_method_of_String() {
+        String actual = "(1,2)";
+
+        String result = actual.substring(1, actual.length()-1);
+        assertThat(result).isEqualTo("1,2");
+    }
+
     private void printActualResult(String[] actual) {
         System.out.println("[Actual Results]");
         for (String s : actual) {
