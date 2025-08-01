@@ -1,9 +1,13 @@
 package study;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 
 import java.util.HashSet;
 import java.util.Set;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class SetTest {
     private Set<Integer> numbers;
@@ -18,4 +22,9 @@ public class SetTest {
     }
 
     // Test Case 구현
+    @DisplayName("[요구사항1] Set의 size() 메소드를 활용하여, Set 데이터의 크기를 확인한다")
+    @Test
+    void check_the_size_of_Set_using_size_method_of_Set() {
+        assertThat(numbers.size()).isEqualTo(3);
+    }
 }
