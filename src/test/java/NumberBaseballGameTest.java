@@ -114,4 +114,64 @@ class NumberBaseballGameTest {
         assertThat(strike).isEqualTo(3);
     }
 
+    @DisplayName("볼 계산(1) - 0볼")
+    @Test
+    void calculate_0_ball() {
+        // given
+        NumberBaseballGame game = new NumberBaseballGame();
+        int[] randomNumbers = {4, 2, 5};
+        int[] testInputs = {1, 2, 3};
+
+        // when
+        int ball = game.calculateBall(randomNumbers, testInputs);
+
+        // then
+        assertThat(ball).isEqualTo(0);
+    }
+
+    @DisplayName("볼 계산(2) - 1볼")
+    @Test
+    void calculate_1_ball() {
+        // given
+        NumberBaseballGame game = new NumberBaseballGame();
+        int[] randomNumbers = {4, 2, 5};
+        int[] testInputs = {4, 5, 6};
+
+        // when
+        int ball = game.calculateBall(randomNumbers, testInputs);
+
+        // then
+        assertThat(ball).isEqualTo(1);
+    }
+
+    @DisplayName("볼 계산(3) - 2볼")
+    @Test
+    void calculate_2_ball() {
+        // given
+        NumberBaseballGame game = new NumberBaseballGame();
+        int[] randomNumbers = {4, 2, 5};
+        int[] testInputs = {4, 5, 2};
+
+        // when
+        int ball = game.calculateBall(randomNumbers, testInputs);
+
+        // then
+        assertThat(ball).isEqualTo(2);
+    }
+
+    @DisplayName("볼 계산(4) - 3볼")
+    @Test
+    void calculate_3_ball() {
+        // given
+        NumberBaseballGame game = new NumberBaseballGame();
+        int[] randomNumbers = {4, 2, 5};
+        int[] testInputs = {5, 4, 2};
+
+        // when
+        int ball = game.calculateBall(randomNumbers, testInputs);
+
+        // then
+        assertThat(ball).isEqualTo(3);
+    }
+
 }
