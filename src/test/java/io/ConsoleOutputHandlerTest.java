@@ -32,7 +32,7 @@ class ConsoleOutputHandlerTest {
     @Test
     void display_the_game_end_message_if_win_the_game() {
         // given
-        String expectedMessage = "3개의 숫자를 모두 맞히셨습니다! 게임 종료\n";
+        String expectedMessage = "3개의 숫자를 모두 맞히셨습니다! 게임 종료" + System.lineSeparator();
 
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outputStream));
