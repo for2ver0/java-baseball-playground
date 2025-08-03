@@ -18,4 +18,20 @@ public class NumberBaseballGame {
         return uniqueNumbers.stream().mapToInt(Integer::intValue).toArray();
     }
 
+    public int calculateStrike(int[] randomNumbers, int[] userInputs) {
+        int strike = 0;
+
+        int count = randomNumbers.length;
+        for (int i = 0; i < count; i++) {
+            strike += getStrikeValue(randomNumbers[i], userInputs[i]);
+        }
+        return strike;
+    }
+
+    public int getStrikeValue(int number1, int number2) {
+        if (number1 == number2) {
+            return 1;
+        }
+        return 0;
+    }
 }
