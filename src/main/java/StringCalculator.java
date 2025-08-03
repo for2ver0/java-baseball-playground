@@ -10,7 +10,7 @@ public class StringCalculator {
         printResult(result);
     }
 
-    private double stringCalculate(String scannerInput) {
+    public double stringCalculate(String scannerInput) {
         String[] inputs = parseInput(scannerInput);
 
         return calculate(inputs);
