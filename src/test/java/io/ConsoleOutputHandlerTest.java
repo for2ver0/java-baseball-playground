@@ -28,4 +28,22 @@ class ConsoleOutputHandlerTest {
         assertThat(outputStream.toString()).isEqualTo(expectedMessage);
     }
 
+    @DisplayName("게임에서 승리하면, 종료 메시지를 출력한다")
+    @Test
+    void display_the_game_end_message_if_win_the_game() {
+        // given
+        String expectedMessage = "3개의 숫자를 모두 맞히셨습니다! 게임 종료\n";
+
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outputStream));
+
+        ConsoleOutputHandler outputHandler = new ConsoleOutputHandler();
+
+        // when
+        outputHandler.showGameWinMessage();
+
+        // then
+        assertThat(outputStream.toString()).isEqualTo(expectedMessage);
+    }
+
 }
