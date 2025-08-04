@@ -46,4 +46,22 @@ class ConsoleOutputHandlerTest {
         assertThat(outputStream.toString()).isEqualTo(expectedMessage);
     }
 
+    @DisplayName("게임 진행 여부 선택지를 출력한다")
+    @Test
+    void display_whether_to_restart_a_new_game_or_quit_the_game() {
+        // given
+        String expectedMessage = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요." + System.lineSeparator();
+
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outputStream));
+
+        ConsoleOutputHandler outputHandler = new ConsoleOutputHandler();
+
+        // when
+        outputHandler.showGameRestartOptions();
+
+        // then
+        assertThat(outputStream.toString()).isEqualTo(expectedMessage);
+    }
+
 }
