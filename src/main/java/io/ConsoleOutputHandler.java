@@ -2,6 +2,25 @@ package io;
 
 public class ConsoleOutputHandler {
 
+    /**
+     * 볼과 스트라이크의 유효성 검사는 ConsoleOutputHandler의 책임이 아님
+     */
+    public void showGameResult(int ball, int strike) {
+        if (ball == 0 && strike == 0) {
+            System.out.println("낫싱");
+            return;
+        }
+        if (strike == 0) {
+            System.out.println(ball + "볼");
+            return;
+        }
+        if (ball == 0) {
+            System.out.println(strike + "스트라이크");
+            return;
+        }
+        System.out.println(ball + "볼 " + strike + "스트라이크");
+    }
+
     public void showNumberInputPrompt() {
         System.out.print("숫자를 입력해 주세요 : ");
     }
@@ -13,5 +32,4 @@ public class ConsoleOutputHandler {
     public void showGameRestartOptions() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     }
-
 }
