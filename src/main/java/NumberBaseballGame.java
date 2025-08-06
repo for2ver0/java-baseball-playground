@@ -20,6 +20,12 @@ public class NumberBaseballGame {
         return uniqueNumbers.stream().mapToInt(Integer::intValue).toArray();
     }
 
+    public GameResult calculateGameResult(int[] randomNumbers, int[] userInputs) {
+        int ball = calculateBall(randomNumbers, userInputs);
+        int strike = calculateStrike(randomNumbers, userInputs);
+        return GameResult.of(ball, strike);
+    }
+
     public int calculateStrike(int[] randomNumbers, int[] userInputs) {
         int strike = 0;
 
