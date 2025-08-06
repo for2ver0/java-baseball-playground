@@ -9,6 +9,27 @@ import java.io.PrintStream;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class ConsoleOutputHandlerTest {
+    
+    @DisplayName("게임 결과를 출력한다")
+    @Test
+    void display_the_game_result() {
+        // given
+        int ball = 1;
+        int strike = 1;
+        int digit = 3;
+        String expectedMessage = ball + "볼 " + strike + "스트라이크" + System.lineSeparator();;
+
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outputStream));
+
+        ConsoleOutputHandler outputHandler = new ConsoleOutputHandler();
+        
+        // when
+        outputHandler.showGameResult(ball, strike);
+        
+        // then
+        assertThat(outputStream.toString()).isEqualTo(expectedMessage);
+    }
 
     @DisplayName("숫자 입력 요청 메시지를 출력한다")
     @Test
